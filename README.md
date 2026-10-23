@@ -28,7 +28,7 @@ Copy `.env.example` to `.env.local` if you set it. Do not commit `.env` files.
 
 Import the GitHub repo. The included `vercel.json` selects the Vite framework, builds with `npm run build`, and publishes `dist`. The SPA rewrite sends every non-API path to `index.html`.
 
-`api/quote.ts` and `api/prices.ts` are Node functions. Each exports `GET(request)` and returns JSON for every outcome, including a Nordstern outage, a plain-text rate limit, or a bad query. They forward only chain `43111` and always send a `Referer` (the browser `Origin` or `Referer` when it is an http(s) URL, otherwise `https://hemiswap.app`).
+`api/quote.ts` and `api/prices.ts` are Node functions. Each exports `GET(request)` and returns JSON for every outcome, including a Nordstern outage, a plain-text rate limit, or a bad query. They forward only chain `43111` and always send a `Referer` (the browser `Origin` or `Referer` when it is an http(s) URL, otherwise `https://hemiswap.xyz`).
 
 `npm run dev` and `npm run preview` do not execute those files. Vite proxies `/api/quote` and `/api/prices` straight to Nordstern. The functions are what production runs.
 

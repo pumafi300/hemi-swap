@@ -2,7 +2,7 @@ import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vitest/config'
 
 const headers = {
-  Referer: 'https://hemiswap.app',
+  Referer: 'https://hemiswap.xyz',
   Accept: 'application/json',
 }
 

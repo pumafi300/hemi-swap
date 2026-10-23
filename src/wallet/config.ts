@@ -15,7 +15,7 @@ if (projectId) {
       metadata: {
         name: 'HemiSwap',
         description: 'DEX aggregator on Hemi mainnet, routed by Nordstern Finance.',
-        url: typeof location !== 'undefined' ? location.origin : 'https://hemiswap.app',
+        url: typeof location !== 'undefined' ? location.origin : 'https://hemiswap.xyz',
         icons: [],
       },
     }),

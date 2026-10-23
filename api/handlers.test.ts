@@ -51,6 +51,16 @@ describe('Vercel quote and price handlers', () => {
     await expect(response.json()).resolves.toMatchObject({ toAmount: '1' })
   })
 
+  it('uses hemiswap.xyz when the request has no origin', async () => {
+    const fetchMock = vi.fn(async (_url: string, init?: RequestInit) => {
+      expect(new Headers(init?.headers).get('Referer')).toBe('https://hemiswap.xyz')
+      return new Response(JSON.stringify({ toAmount: '1' }), { status: 200, headers: { 'content-type': 'application/json' } })
+    })
+    vi.stubGlobal('fetch', fetchMock)
+    const response = await quote(new Request(quoteUrl(`?src=${ETH}&dst=${USDC}&amount=1&from=${FROM}&slippage=0.5`)))
+    expect(response.status).toBe(200)
+  })
+
   it('turns an upstream rate-limit body into JSON', async () => {
     vi.stubGlobal(
       'fetch',

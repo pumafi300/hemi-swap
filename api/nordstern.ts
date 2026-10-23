@@ -6,7 +6,7 @@
  */
 
 export const NORDSTERN_ORIGIN = 'https://api.nordstern.finance'
-const FALLBACK_REFERER = 'https://hemiswap.app'
+const FALLBACK_REFERER = 'https://hemiswap.xyz'
 
 export function isHexAddress(value: string): boolean {
   return /^0x[a-fA-F0-9]{40}$/.test(value.trim())
