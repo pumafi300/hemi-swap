@@ -28,7 +28,11 @@ Copy `.env.example` to `.env.local` if you set it. Do not commit `.env` files.
 
 Import the GitHub repo. The included `vercel.json` selects the Vite framework, builds with `npm run build`, and publishes `dist`. The SPA rewrite sends every non-API path to `index.html`.
 
-`api/quote.ts` and `api/prices.ts` are serverless functions. They forward to Nordstern with a `Referer` header (the browser origin, or `https://hemiswap.app` when the request has none) and only allow the Hemi chain id. Local `npm run dev` and `npm run preview` proxy the same paths, so quotes work without `vercel dev`.
+`api/quote.ts` and `api/prices.ts` are Node functions. Each exports `GET(request)` and returns JSON for every outcome, including a Nordstern outage, a plain-text rate limit, or a bad query. They forward only chain `43111` and always send a `Referer` (the browser `Origin` or `Referer` when it is an http(s) URL, otherwise `https://hemiswap.app`).
+
+`npm run dev` and `npm run preview` do not execute those files. Vite proxies `/api/quote` and `/api/prices` straight to Nordstern. The functions are what production runs.
+
+The first deploy crashed both routes with `FUNCTION_INVOCATION_FAILED` before the handler ran. `package.json` is `"type": "module"`, so Vercel loads the compiled function with Node's native ESM resolver. The handlers imported `../src/lib/address` with no file extension, and that module also imports `viem`. Node threw `ERR_MODULE_NOT_FOUND` while evaluating the module. The handlers now import only extensioned local files (`./nordstern.js`, `../src/lib/slippage.js`) and do not import `viem`.
 
 Set `VITE_WALLETCONNECT_PROJECT_ID` in the Vercel project only if you want WalletConnect. No other secrets are required. Nordstern does not use an API key.
 
@@ -60,4 +64,4 @@ Default tokens: ETH, WETH, USDC.e (`0xad11â€¦5afA`, 6 decimals), USDT (`0xbB0Dâ€
 
 ## Tests
 
-`npm test` covers amount parsing, slippage clamping, the Guard address check, the material re-quote threshold, gas scaling, route mapping (including the native wrap hop and the ban on venue names), Nordstern error mapping, and the swap button state machine.
+`npm test` covers amount parsing, slippage clamping, the Guard address check, the material re-quote threshold, gas scaling, route mapping (including the native wrap hop and the ban on venue names), Nordstern error mapping, the swap button state machine, and the `/api/quote` and `/api/prices` handlers (JSON errors, Referer, and upstream failures).

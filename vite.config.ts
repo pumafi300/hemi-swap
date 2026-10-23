@@ -29,6 +29,6 @@ export default defineConfig({
   preview: { host: '0.0.0.0', port: 4173, proxy },
   test: {
     environment: 'node',
-    include: ['src/**/*.test.ts'],
+    include: ['src/**/*.test.ts', 'api/**/*.test.ts'],
   },
 })
