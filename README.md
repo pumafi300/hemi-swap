@@ -49,7 +49,7 @@ Set `VITE_WALLETCONNECT_PROJECT_ID` in the Vercel project only if you want Walle
 
 Native ETH uses the sentinel `0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE`. Wrapped ETH is `0x4200000000000000000000000000000000000006`.
 
-Default tokens: ETH, WETH, USDC.e (`0xad11…5afA`, 6 decimals), USDT (`0xbB0D…1C2e`, 6), hemiBTC (`0xAA40…ef28`, 8), HEMI (`0x99e3…591D`, 18), VUSD (`0xD359…345B`, 18). Any other Hemi ERC-20 can be imported by address. Symbol, name, and decimals are read on-chain. Imported tokens stay in `localStorage` and are shown with a warning.
+Default tokens: ETH, WETH, USDC.e (`0xad11…5afA`, 6 decimals), USDT (`0xbB0D…1C2e`, 6), hemiBTC (`0xAA40…ef28`, 8), WBTC (`0x03C7…Cfa3`, 8), HEMI (`0x99e3…591D`, 18), VUSD (`0xD359…345B`, 18, Vetro USD). Any other Hemi ERC-20 can be imported by address. Symbol, name, and decimals are read on-chain. Imported tokens stay in `localStorage` and are shown with a warning.
 
 ## Nordstern quirks
 

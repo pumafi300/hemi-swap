@@ -56,6 +56,14 @@ export const DEFAULT_TOKENS: Token[] = [
     icon: '/tokens/hemibtc.svg',
   },
   {
+    address: '0x03C7054BCB39f7b2e5B2c7AcB37583e32D70Cfa3',
+    symbol: 'WBTC',
+    name: 'Wrapped BTC',
+    decimals: 8,
+    displayDecimals: 6,
+    icon: '/tokens/wbtc.svg',
+  },
+  {
     address: '0x99e3dE3817F6081B2568208337ef83295b7f591D',
     symbol: 'HEMI',
     name: 'Hemi',
@@ -66,14 +74,14 @@ export const DEFAULT_TOKENS: Token[] = [
   {
     address: '0xD3599AE62EE280709A22268a46d23164214e345B',
     symbol: 'VUSD',
-    name: 'Vesper USD',
+    name: 'Vetro USD',
     decimals: 18,
     displayDecimals: 2,
     icon: '/tokens/vusd.svg',
   },
 ]
 
-export const QUICK_SYMBOLS = ['ETH', 'hemiBTC', 'USDC.e', 'HEMI'] as const
+export const QUICK_SYMBOLS = ['ETH', 'hemiBTC', 'WBTC', 'USDC.e', 'HEMI'] as const
 
 export const IMPORTED_STORAGE_KEY = 'hemiswap.imported.v1'
 
